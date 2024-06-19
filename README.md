@@ -1,50 +1,55 @@
-# Ex-2: Computational Derivation and Matrix Multiplication
+# Computational Derivation and Matrix Multiplication
 
-## Overview
-In this exercise, you will practice computational derivation and matrix multiplication.
+This repository contains solutions to exercises on computational derivation, root mean square error (RMSE) implementation, and matrix multiplication using tensors.
 
-## Objectives
-1. Calculate the derivative of a function at a given point.
-2. Perform matrix multiplication with tensors.
-3. Implement a simple RMSE function.
+## Files
 
-## The Assignment
+1. **`computational_derivation.py`**: Implements the function `compute_derivative` to calculate the derivative of a function at a given point using the definition of the derivative.
+   
+2. **`rmse.py`**: Implements the function `rmse` to calculate the root mean square error between predicted and true values.
 
-### Computational Derivation (1 point)
-1. Given a function $f()$, calculate the derivative of the function $f$ at point $x$ using the definition of the derivative and evaluating the slope between points $x$ and $x+h$.
-2. So, $f'()$ at point $x$ is ${{f(x+h) - f(x)} \over h}$ when $h$ is _very small_.
-3. You can also use the definition ${{f(x+h) - f(x-h)} \over 2h}$. For the purpose of this exercise, you can take $h$ to a small value of your choosing (e.g., $h=0.001$).
+3. **`tensor_multiplication.py`**: Implements the function `matrix_multiplication` to perform matrix multiplication using tensors, ensuring correct dimension matching by transposing the weight matrix.
 
-### RMSE Implementation (1 points)
-1. Follow the instructions provided in the `rmse.py` file.
-2. RMSE (Root Mean Square Error) = $\sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y_i})^2}$, where $y_i$ are the true values, $\hat{y_i}$ are the predicted values, and $n$ is the total number of samples.
+## Exercise Details
 
-### Matrix Multiplication (3 points)
-1. Follow the instructions provided in the `tensor_multiplication.py` file.
-2. Your solution should be concise, typically a one-liner.
-3. We introduce the transpose operator `W.T`, which switches the dimensions around. This is to conform with conventions of how the weight matrix is typically written in PyTorch and to ensure that when we perform matrix multiplication, the inner dimensions match.
+### Computational Derivation
 
----
+Given a function \( f(x) \), the derivative \( f'(x) \) at point \( x \) is calculated using:
+- The definition of the derivative \( f'(x) = \lim_{\epsilon \to 0} \frac{f(x + \epsilon) - f(x)}{\epsilon} \).
 
-## Validating and Evaluating Your Results
+### RMSE Implementation
 
-### Online
-1. After committing and pushing your code, check the mark on the top line (near the commit ID).
-2. If some tests are failing, click on the ❌ to open up a popup, which will show details about the errors.
-3. You can click the [Details]() link to see what went wrong. Pay special attention to lines with the words "Failed" or "error".
+Root Mean Square Error (RMSE) is calculated as:
+\[ \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_{true}^{(i)} - y_{pred}^{(i)})^2} \]
+where \( y_{true} \) and \( y_{pred} \) are tensors of true and predicted values, respectively.
 
-![screnshot](images/details_screenshot.png)
+### Matrix Multiplication
 
-4. Near the bottom of the [Details]() page, you can see your score. Here are examples of 0/5 and 5/5:
+Matrix multiplication is performed using tensors:
+\[ Z = X \cdot W^T \]
+where \( X \) is a tensor of shape \( (m, n) \) and \( W \) is a tensor of shape \( (p, n) \). \( W^T \) is used to ensure correct dimensions for multiplication.
 
-![score](images/score.png) ![success](images/success.png)
+## Usage
 
-5. When you achieve a perfect score, you will see a green checkmark near the commit ID.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/samiamjidkhan/computational-derivation-matrix-multiplication.git
+   cd computational-derivation-matrix-multiplication
+   ```
 
-![green](images/green.png)
+2. Run individual scripts or integrate functions into your projects as needed.
 
-### Locally
-1. You can test your code locally by installing and running `pytest` (`pip install pytest` or `conda install pytest`).
-2. Run the tests using the command `pytest` in your terminal. This will show the status of each test and any errors that occurred.
+### Running Tests
 
-Good luck!
+To validate locally:
+
+1. Install pytest if not already installed:
+   ```sh
+   pip install pytest
+   ```
+
+2. Run tests:
+   ```sh
+   pytest
+   ```
+
